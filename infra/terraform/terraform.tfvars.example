@@ -1,0 +1,24 @@
+project_name = "aws-rag-document-semantic-search-poc"
+aws_region   = "us-east-2"
+aws_profile  = "anekur-admin"
+environment  = "poc"
+bedrock_region = "us-east-1"
+
+bucket_name_prefix          = "aws-rag-poc-documents"
+s3_force_destroy            = true
+opensearch_collection_name  = "rag-semantic-poc"
+opensearch_index_name      = "claims-rag-index"
+bedrock_embedding_model_id = "amazon.titan-embed-text-v2:0"
+
+# Fill this in during the OpenSearch Serverless data-access step.
+# To find the current caller identity:
+# aws sts get-caller-identity --profile anekur-admin
+#
+# For AWS SSO, prefer the IAM role ARN, not the temporary STS assumed-role ARN.
+# Example shape:
+# arn:aws:iam::123456789012:role/aws-reserved/sso.amazonaws.com/us-east-2/AWSReservedSSO_AdministratorAccess_abc123
+aoss_data_access_principal_arns = []
+
+# Optional IAM role names to attach the local script policy to.
+# Leave empty if using the admin SSO profile for this POC.
+poc_iam_role_names_to_attach = []
